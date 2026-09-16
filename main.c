@@ -1,4 +1,4 @@
-/* IMPORTACI”N DE LIBRERÕAS */
+/* IMPORTACI√ìN DE LIBRER√çAS */
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -6,7 +6,7 @@
 #include <ctype.h>
 //#include <xc.h>
 
-/* DEFINICI”N DE VOCALES CON TILDE Y E—ES */
+/* DEFINICI√ìN DE VOCALES CON TILDE Y E√ëES */
 unsigned char a_tilde = 160;
 unsigned char e_tilde = 130;
 unsigned char i_tilde = 161;
@@ -19,8 +19,8 @@ unsigned char O_tilde = 224;
 unsigned char U_tilde = 233;
 unsigned char enie = 164;
 unsigned char Enie = 165;
+unsigned char signoDePreguntaInvertido = 168;
 unsigned char espacio = 32;
-
 /* DEFINICIONES DE VARIABLES UNIVERSALES */
 uint8_t mazoCompleto[4][15];
 uint8_t mazoPorPalo[15] = { 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 'J', 'Q', 'K' };
@@ -52,13 +52,13 @@ uint8_t randomNumber(uint8_t);
  * El objetivo de los jugadores es sumar 21 puntos.
  * Los jugadores pueden dejar de jugar antes de llegar a 21 puntos sin perder.
  * Si un jugador se pasa de 21 puntos, pierde.
- * Si un jugador tiene exactamente 21 puntos, se dice "BLACKJACK" y gana autom·ticamente a la casa.
- * DespuÈs de que el jugador termine de pedir sus cartas, reciÈn entonces la casa empieza a pedir.
+ * Si un jugador tiene exactamente 21 puntos, se dice "BLACKJACK" y gana automÔøΩticamente a la casa.
+ * Despu√©s de que el jugador termine de pedir sus cartas, reciÔøΩn entonces la casa empieza a pedir.
  *    1. Primero revela la que estaba oculta.
- *    2. DespuÈs sÌ o sÌ pide una carta (teniendo 3 en total).
+ *    2. Despu√©s s√≠ o s√≠ pide una carta (teniendo 3 en total).
  *    3. La casa puede pedir cuantas cartas quiera.
  *      a. Si la casa se pasa de 21 puntos, pierde.
- *      b. Entre la casa y el jugador: el que tenga m·s puntos sin pasarse de 21 gana.
+ *      b. Entre la casa y el jugador: el que tenga m√°s puntos sin pasarse de 21 gana.
  * /
 
 /* PASO A PASO */
@@ -72,7 +72,7 @@ uint8_t randomNumber(uint8_t);
 int main() {
     unsigned char yaSeIngresoUnaCantidadDeJugadores = 0;
 
-    printf("øCu%cntos jugadores hay? \n\n", a_tilde);
+    printf("%cCu%cntos jugadores hay? \n\n", signoDePreguntaInvertido, a_tilde);
     printf("\tCantidad de jugadores: ", a_tilde);
     do{
         scanf("%d", &cantidadDeJugadores);
@@ -115,10 +115,10 @@ void iniciarJuego(void){
         }
     }
 
-    //La casa de cada jugador saca dos cartas para sÌ misma
+    //La casa de cada jugador saca dos cartas para s√≠ misma
     for(uint8_t casaActual=0; casaActual<cantidadDeJugadores; casaActual++) {
         /*
-        //Si el espacio en cartasEnMazo_Casa indicado por el Ìndice actual (indiceDeCartas_Casa) no est· vacÌo, se incrementa en 1 al Ìndice actual
+        //Si el espacio en cartasEnMazo_Casa indicado por el √≠ndice actual (indiceDeCartas_Casa) no est√° vac√≠o, se incrementa en 1 al √≠ndice actual
         while(cartasEnMazo_Casa[indiceDeCartas_Casa[casaActual]] != 0) {
             indiceDeCartas_Casa[casaActual]++;
         }
