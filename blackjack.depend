@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1789570517 source:z:\proyectos\2026\blackjack\main.c
+	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+

@@ -21,7 +21,9 @@ unsigned char enie = 164;
 unsigned char Enie = 165;
 unsigned char signoDePreguntaInvertido = 168;
 unsigned char espacio = 32;
+
 /* DEFINICIONES DE VARIABLES UNIVERSALES */
+uint16_t seed; //Variable para generación de números aleatorios
 uint8_t mazoCompleto[4][15];
 uint8_t mazoPorPalo[15] = { 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 'J', 'Q', 'K' };
 //El J, Q y K valen 10
@@ -41,34 +43,11 @@ uint8_t separador[150] = "= = = = = = = = = = = = = = = = = = = = = = = = = = = 
 //void input(unsigned char*, unsigned char);
 void iniciarJuego(void);
 uint8_t pedirCarta(void);
-void mostarCarta(uint8_t);
+void mostrarCarta(uint8_t);
 void finDelJuego(void);
 uint8_t randomNumber(uint8_t);
 
-/* REGLAS */
-/*
- * Hay una casa por cada jugador
- * Los valores de las cartas de los jugadores se suman.
- * El objetivo de los jugadores es sumar 21 puntos.
- * Los jugadores pueden dejar de jugar antes de llegar a 21 puntos sin perder.
- * Si un jugador se pasa de 21 puntos, pierde.
- * Si un jugador tiene exactamente 21 puntos, se dice "BLACKJACK" y gana autom�ticamente a la casa.
- * Después de que el jugador termine de pedir sus cartas, reci�n entonces la casa empieza a pedir.
- *    1. Primero revela la que estaba oculta.
- *    2. Después sí o sí pide una carta (teniendo 3 en total).
- *    3. La casa puede pedir cuantas cartas quiera.
- *      a. Si la casa se pasa de 21 puntos, pierde.
- *      b. Entre la casa y el jugador: el que tenga más puntos sin pasarse de 21 gana.
- * /
-
-/* PASO A PASO */
-/*
- * La casa saca dos cartas por jugador: muestra una y oculta la otra
- * A cada jugador se le dan dos cartas y todos las pueden ver
- * En cada turno del jugador, el jugador pide una carta (alternativamente puede pedir la cantidad que quiera)
- * El jugador puede dejar de pedir cartas en cualquier momento, habilitando a la casa a pedir cartas y terminar el juego.
- */
-
+//main
 int main() {
     unsigned char yaSeIngresoUnaCantidadDeJugadores = 0;
 
@@ -94,7 +73,7 @@ int main() {
 void iniciarJuego(void){
     uint8_t auxIndex;
 
-    //Reinicia el registro del mazo
+    //Reinicia el registro del mazo principal
     for(uint8_t auxIndiceMazo1=0; auxIndiceMazo1<4; auxIndiceMazo1++){
         for(uint8_t auxIndiceMazo2=0; auxIndiceMazo2<15; auxIndiceMazo2++){
             mazoCompleto[auxIndiceMazo1][auxIndiceMazo2];
@@ -135,18 +114,41 @@ void iniciarJuego(void){
 
     //La casa de cada jugador revela una de sus cartas y oculta la otra
     for(uint8_t casaActual=0; casaActual<cantidadDeJugadores; casaActual++) {
-        printf("\nCartas de la casa del jugador 1: ");
+        printf("\n\tPrimera carta de la casa del jugador %d: ", casaActual+1);
         auxIndex = indiceDeCartas_Casa[casaActual] - 2;
-        mostarCarta(cartasEnMazo_Casa[auxIndex]);
+        mostrarCarta(cartasEnMazo_Casa[casaActual][auxIndex]);
+    }
+
+    //Se le asignan dos cartas a cada jugador
+    for(uint8_t jugadorActual=0; jugadorActual<cantidadDeJugadores; jugadorActual++) {
+        printf("\n\tPrimera carta de la casa del jugador %d: ", jugadorActual+1);
+        auxIndex = indiceDeCartas_Casa[jugadorActual] - 2;
+        mostrarCarta(cartasEnMazo_Casa[jugadorActual][auxIndex]);
     }
 }
 
 uint8_t pedirCarta(void){
-    randomNumber(12);
+    uint8_t carta = randomNumber(15);
+    carta++;
+
+    if(carta>=2 && carta<=12){
+        return carta;
+    } else if(carta==1){
+        return 'A';
+    } else if(carta==13){
+        return 'J';
+    } else if(carta==14){
+        return 'J';
+    } else if(carta==15){
+        return 'J';
+    }
 }
 
 uint8_t randomNumber(uint8_t modulo){
-    //modulo
+    seed ^= (seed << 7);
+    seed ^= (seed >> 9);
+    seed ^= (seed << 8);
+    return (seed % modulo);
 }
 
 void mostrarCarta(uint8_t carta){
