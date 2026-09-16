@@ -14,7 +14,9 @@
         - Entre la casa y el jugador: el que tenga más puntos sin pasarse de 21 gana.
 
 ## PASO A PASO
-[ ] La casa saca dos cartas por jugador: muestra una y oculta la otra
-[ ] A cada jugador se le dan dos cartas y todos las pueden ver
-[ ] En cada turno del jugador, el jugador pide una carta (alternativamente puede pedir la cantidad que quiera)
-[ ] El jugador puede dejar de pedir cartas en cualquier momento, habilitando a la casa a pedir cartas y terminar el juego.
+- [X] El programa se inicializa (se olvidan las cartas que los jugadores y las casas tengan en sus mazos, así como la cantidad).
+- [X] El programa solicita la cantidad de jugadores. Habrán igual cantidad de casas como de jugadores.
+- [ ] La casa saca dos cartas por jugador: muestra una y oculta la otra
+- [ ] A cada jugador se le dan dos cartas y todos las pueden ver
+- [ ] En cada turno del jugador, el jugador pide una carta (alternativamente puede pedir la cantidad que quiera)
+- [ ] El jugador puede dejar de pedir cartas en cualquier momento, habilitando a la casa a pedir cartas y terminar el juego.
