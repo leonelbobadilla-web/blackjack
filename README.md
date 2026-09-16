@@ -10,6 +10,7 @@
 1. Primero revela la que estaba oculta.
 2. Después sí o sí pide una carta (teniendo 3 en total).
 3. La casa puede pedir cuantas cartas quiera.
+
 a. Si la casa se pasa de 21 puntos, pierde.
 b. Entre la casa y el jugador: el que tenga más puntos sin pasarse de 21 gana.
 
