@@ -7,12 +7,13 @@
 - Si un jugador se pasa de 21 puntos, pierde.
 - Si un jugador tiene exactamente 21 puntos, se dice "BLACKJACK" y gana autom�ticamente a la casa.
 - Después de que el jugador termine de pedir sus cartas, reci�n entonces la casa empieza a pedir
-1. Primero revela la que estaba oculta.
-2. Después sí o sí pide una carta (teniendo 3 en total).
-3. La casa puede pedir cuantas cartas quiera.
+    1. Primero revela la que estaba oculta.
+    2. Después sí o sí pide una carta (teniendo 3 en total).
+    3. La casa puede pedir cuantas cartas quiera.
 
-a. Si la casa se pasa de 21 puntos, pierde.
-b. Entre la casa y el jugador: el que tenga más puntos sin pasarse de 21 gana.
+        a. Si la casa se pasa de 21 puntos, pierde.
+
+        b. Entre la casa y el jugador: el que tenga más puntos sin pasarse de 21 gana.
 
 ## PASO A PASO
 [ ] La casa saca dos cartas por jugador: muestra una y oculta la otra
